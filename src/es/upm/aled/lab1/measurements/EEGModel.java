@@ -23,7 +23,7 @@ import es.upm.aled.lab1.gui.EEG_GUI;
  * @author mmiguel, rgarciacarmona
  *
  */
-public class EEGModel {
+public class EEGModel{
 
 	protected List<Measurement> measurements = new ArrayList<Measurement>();
 	protected EEG_GUI gui;
@@ -56,10 +56,11 @@ public class EEGModel {
 	 * @param measurements The Measurements that make up the EEGModel.
 	 */
 	public EEGModel(Measurement[] measurements) {
-		Measurement[] measurementsA = new Measurement [measurements.length];
+		this.measurements= new ArrayList<>(); 
+		for (int i=0; i<measurements.length; i++) {
+			this.measurements.add(measurements[i]);
+		}
 		
-		
-		// TODO
 		
 	}
 
@@ -92,9 +93,9 @@ public class EEGModel {
 	 * @return The new EEGModel.
 	 */
 	public EEGModel filter(Filter filter) {
-		// TODO
+		EEGModel filtered = filter.applyFilter(this);
 		
-		return null;
+		return filtered; 
 	}
 
 	/**
