@@ -56,6 +56,9 @@ public class EEGModel {
 	 * @param measurements The Measurements that make up the EEGModel.
 	 */
 	public EEGModel(Measurement[] measurements) {
+		Measurement[] measurementsA = new Measurement [measurements.length];
+		
+		
 		// TODO
 		
 	}
