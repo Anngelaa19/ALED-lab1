@@ -1,4 +1,4 @@
-package es.upm.aled.lab1.measurements;
+ package es.upm.aled.lab1.measurements;
 
 /**
  * Interface used to define a filter that can be applied over an EEG model.

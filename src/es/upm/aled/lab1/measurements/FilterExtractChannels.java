@@ -8,13 +8,15 @@ package es.upm.aled.lab1.measurements;
  */
 public class FilterExtractChannels implements Filter {
 
+	private int[] validChannels;
+
 	/**
 	 * Builds the Filter. The use from an array of valid channels.
 	 * 
 	 * @param validChannels The channel numbers to be extracted, starting from 0.
 	 */
 	public FilterExtractChannels(int[] validChannels) {
-		// TODO
+		this.validChannels = validChannels; 
 		
 	}
 

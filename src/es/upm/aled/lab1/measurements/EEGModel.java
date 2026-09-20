@@ -134,17 +134,6 @@ public class EEGModel{
 	 * @throws IOException Thrown if the file can't be written.
 	 */
 	public void saveFile(String fileName) throws IOException {
-		// TODO
-		/**Vale hay que almacenar el EEGModel en un archivo de texto de tal manera que 
-		 * siga el formato del primer número sea el número de muestra, y los siguientes 
-		 * (que son decimales y pueden ser negativos o positivos)-> long
-		 *  los números dados por los canales 
-		 * 
-		 *  Entonces el EEGModel lo hemos construido con las medidas en un array.
-		 *  Además está el loadFile que rellena las medidas de los contenidos de OpenBCI por
-		 *  lo que hay que fusionar el loadFile con el EEGModel 
-		 * 
-		 */
 		
 		File f = new File (fileName);
 		FileOutputStream fos = new FileOutputStream (f);
@@ -275,7 +264,11 @@ public class EEGModel{
 		if (args.length > 0) {
 			EEGModel eeg = new EEGModel(args[0]);
 			eeg.plotData();
-			// TODO
+			int[] canalesDeseados = {0,1};
+			Filter miFiltro = new FilterExtractChannels(canalesDeseados);
+			EEGModel eegFiltrado = eeg.filter(miFiltro);
+			eegFiltrado.plotData();
+			eegFiltrado.saveFile("datos_filtrados.txt"); 	
 			
 		} else {
 			EEGModel eeg = new EEGModel();
