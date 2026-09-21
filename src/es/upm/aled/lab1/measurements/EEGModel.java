@@ -260,7 +260,7 @@ public class EEGModel{
 		return new Measurement(curDataPacket_values);
 	}
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		if (args.length > 0) {
 			EEGModel eeg = new EEGModel(args[0]);
 			eeg.plotData();
@@ -273,7 +273,11 @@ public class EEGModel{
 		} else {
 			EEGModel eeg = new EEGModel();
 			eeg.createSyntheticData(1000);
-			// TODO
+			int[]canalesdDeseados = {0, 1};
+			Filter miFiltro = new FilterExtractChannels(canalesdDeseados); 
+			EEGModel eegFiltrado = eeg.filter(miFiltro);
+			eegFiltrado.plotData();
+			eegFiltrado.saveFile("datos_sinteticos_filtrados.txt");
 			
 		}
 	}
